@@ -12,22 +12,36 @@ st.set_page_config(
 )
 ocultar_elementos_css = """
     <style>
-    /* Ocultar barra superior (Fork, icono GitHub, menú) */
-    header {visibility: hidden !important; display: none !important;}
+    /* Ocultar barra superior y pie de página */
+    header, footer {
+        visibility: hidden !important;
+        display: none !important;
+    }
     
-    /* Ocultar pie de página clásico */
-    footer {visibility: hidden !important; display: none !important;}
+    /* Ocultar barra flotante de estado y badge de Streamlit Cloud */
+    .stAppFooter, 
+    div[data-testid="stStatusWidget"],
+    div[data-testid="stDecoration"],
+    div[data-testid="stToolbar"],
+    #MainMenu,
+    [data-testid="stViewerBadge"],
+    .viewerBadge_container__1t53K,
+    .styles_viewerBadge__1yB5g {
+        display: none !important;
+        visibility: hidden !important;
+    }
     
-    /* Ocultar marca de agua y barra flotante inferior ("Hosted with Streamlit") */
-    .stAppFooter {display: none !important; visibility: hidden !important;}
-    div[data-testid="stStatusWidget"] {display: none !important; visibility: hidden !important;}
-    div[data-testid="stDecoration"] {display: none !important;}
-    div[data-testid="stToolbar"] {display: none !important;}
-    #MainMenu {visibility: hidden !important;}
+    /* Ocultar cualquier elemento o enlace flotante en la esquina inferior */
+    iframe[title="streamlit_app"],
+    a[href*="streamlit.io"],
+    a[href*="github.com"] {
+        display: none !important;
+    }
     
-    /* Forzar ocultamiento de enlaces flotantes en esquinas inferiores */
-    a[href*="streamlit.io"] {display: none !important;}
-    [data-testid="stViewerBadge"] {display: none !important;}
+    /* Remover márgenes inferiores para limpiar la vista */
+    .main .block-container {
+        padding-bottom: 1rem !important;
+    }
     </style>
 """
 st.markdown(ocultar_elementos_css, unsafe_allow_html=True)
