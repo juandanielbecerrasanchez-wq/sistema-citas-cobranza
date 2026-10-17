@@ -12,10 +12,22 @@ st.set_page_config(
 )
 ocultar_elementos_css = """
     <style>
-    header {visibility: hidden !important;}
-    footer {visibility: hidden !important;}
-    .stAppFooter {display: none !important;}
+    /* Ocultar barra superior (Fork, icono GitHub, menú) */
+    header {visibility: hidden !important; display: none !important;}
+    
+    /* Ocultar pie de página clásico */
+    footer {visibility: hidden !important; display: none !important;}
+    
+    /* Ocultar marca de agua y barra flotante inferior ("Hosted with Streamlit") */
+    .stAppFooter {display: none !important; visibility: hidden !important;}
+    div[data-testid="stStatusWidget"] {display: none !important; visibility: hidden !important;}
     div[data-testid="stDecoration"] {display: none !important;}
+    div[data-testid="stToolbar"] {display: none !important;}
+    #MainMenu {visibility: hidden !important;}
+    
+    /* Forzar ocultamiento de enlaces flotantes en esquinas inferiores */
+    a[href*="streamlit.io"] {display: none !important;}
+    [data-testid="stViewerBadge"] {display: none !important;}
     </style>
 """
 st.markdown(ocultar_elementos_css, unsafe_allow_html=True)
