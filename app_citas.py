@@ -10,6 +10,15 @@ st.set_page_config(
     page_icon="📅",
     layout="wide"
 )
+ocultar_elementos_css = """
+    <style>
+    header {visibility: hidden !important;}
+    footer {visibility: hidden !important;}
+    .stAppFooter {display: none !important;}
+    div[data-testid="stDecoration"] {display: none !important;}
+    </style>
+"""
+st.markdown(ocultar_elementos_css, unsafe_allow_html=True)
 
 PASSWORD_COBRANZA = "cobranza2026"
 
